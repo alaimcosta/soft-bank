@@ -45,7 +45,6 @@ public class EmprestimoController {
     @PostMapping
     @Transactional
     public ResponseEntity cadastrar(@RequestBody @Valid DadosSolicitacaoEmprestimo dados){
-        System.out.printf("Id do cliente ", dados.clienteId());
         var cliente = clienteRepository.findById(dados.clienteId())
             .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
         var emprestimo = new Emprestimo(dados, cliente);

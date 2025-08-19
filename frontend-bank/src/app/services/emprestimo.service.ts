@@ -66,11 +66,7 @@ export class EmprestimoService {
     const url = `${this.apiUrlBcCotacao}(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='${moeda}'&@dataCotacao='${data}'&$top=100&$format=json`;
     return this.http.get<{value: any[]}>(url).pipe(
       map(r => {
-        console.log(r)
-        const cotacao5 = r.value[4]?.cotacaoCompra ?? 0;
-        const cotacao1 = r.value[0]?.cotacaoCompra ?? 0;
-        return cotacao5 !== 0 ? cotacao5 : cotacao1;
-        
+        return r.value[4]?.cotacaoCompra ?? 0;
       })
     );
   }

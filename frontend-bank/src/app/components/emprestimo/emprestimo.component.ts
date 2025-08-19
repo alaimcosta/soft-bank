@@ -56,11 +56,11 @@ export class EmprestimoComponent implements OnInit {
     if (!this.moeda || !this.dataEmprestimo) {
       return;
     }
-    const dataFormatada = new Date(this.dataEmprestimo).toLocaleDateString('en-US');
+    const [ano, mes, dia] = this.dataEmprestimo.split('-');
+    const dataFormatada = `${mes}-${dia}-${ano}`;
 
     this.emprestimoService.cotacaoMoeda(this.moeda, dataFormatada).subscribe({
       next: (cotacao) => {
-        console.log(cotacao)
         this.taxaConversao = cotacao;
       },
       error: (err) => {
@@ -98,7 +98,6 @@ export class EmprestimoComponent implements OnInit {
     );
 
     const valorEmReais = this.valorObtidoEmprestimo * this.taxaConversao;
-
     this.valorTotal = this.emprestimoService.calcularValorFinal(
       valorEmReais,
       this.taxaJurosMensal,
