@@ -36,13 +36,12 @@ public class Emprestimo {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
     private LocalDate dataEmprestimo;
     private String moeda;
     private BigDecimal valorObtidoEmprestimo;
     private BigDecimal taxaConversao;
     private LocalDate dataVencimentoEmprestimo;
-    private int quantidadeMeses; //não aceita nulo
+    private int quantidadeMeses;
     private BigDecimal taxaJurosMensal;
     private BigDecimal valorTotal;
     private Boolean ativo;
