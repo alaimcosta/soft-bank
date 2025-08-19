@@ -154,6 +154,17 @@ Segue o padrão **SPA (Single Page Application)** e utiliza **TypeScript** como 
 - **cliente/cliente.component.ts** CRUD de clientes
 - **emprestimo/emprestimo.component.ts** Solicitação de empréstimos
 
+### Dependência Externa
+- **RxJS (Reactive Extensions for JavaScript)** 
+O RxJS é uma biblioteca para programação reativa baseada em **Observables**.
+No Angular, ele é amplamente utilizado para lidar com operações assíncronas e fluxos de dados contínuos, como chamadas HTTP, eventos de interface, timers e comunicação em tempo real.
+
+- Permite inscrever-se em fluxos de dados e reagir automaticamente quando houver novas informações.
+
+- Fornece operadores como map, filter, switchMap e mergeMap que permitem transformar e manipular os dados recebidos.
+
+- É a base do sistema de Observables do Angular e está presente em módulos como o **HttpClient**.
+
 ## 🔧 Configuração do Banco de Dados
 
 Configure o arquivo `application.properties`:
