@@ -1,0 +1,42 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="modalInput">
+      <h2>Cadastro de Clientes</h2>
+      <form (ngSubmit)="salvar()">
+        <input type="text" 
+          placeholder="Nome do cliente" 
+          [(ngModel)]="nome" 
+          name="nome" 
+          required
+        >
+        <button type="submit" [disabled]="!nome || nome.trim().length === 0"
+          [ngClass]="{ 'disabled-btn': !nome || nome.trim().length === 0 }"
+        >
+          {{ editId !== null ? 'Atualizar' : 'Adicionar' }}
+        </button>
+        <button *ngIf="editId !== null" type="button" (click)="cancelar()">Cancelar</button>
+      </form>
+    </div>
+
+    <table border="1" *ngIf="clientes.length > 0" style="margin-top:10px; width:100%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.id }}</td>
+          <td>{{ cliente.nome }}</td>
+          <td>
+            <button (click)="editar(cliente)">Editar</button>
+            <button (click)="remover(cliente.id)">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
